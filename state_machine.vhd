@@ -1,14 +1,16 @@
+-- Adiiti Jindal, Brandon Kong, Group 15
+
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
 entity state_machine is port(
 
-	clk_input, reset, sm_clken, blink_sig, ns_request, ew_request		: in std_logic;
-	ns_green, ns_amber, ns_red, ew_green, ew_amber, ew_red				: out std_logic;
-	ns_crossing, ew_crossing														: out std_logic;
-	ns_clear, ew_clear																: out std_logic;
-	bin_state																			: out std_logic_vector(3 downto 0)
+	clk_input, reset, sm_clken, blink_sig, ns_request, ew_request: in std_logic;
+	ns_green, ns_amber, ns_red, ew_green, ew_amber, ew_red: out std_logic;
+	ns_crossing, ew_crossing: out std_logic;
+	ns_clear, ew_clear: out std_logic;
+	bin_state: out std_logic_vector(3 downto 0)
 	
 );
 end entity;
