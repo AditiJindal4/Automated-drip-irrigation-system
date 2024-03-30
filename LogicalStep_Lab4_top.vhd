@@ -102,19 +102,17 @@ ARCHITECTURE SimpleCircuit OF LogicalStep_Lab4_top IS
 			bin_state		: out std_logic_vector(3 downto 0)
 	);
 	end component;
-	
-			
 ----------------------------------------------------------------------------------------------------
-	CONSTANT	sim_mode																	: boolean := FALSE;  -- set to FALSE for LogicalStep board downloads																						-- set to TRUE for SIMULATIONS
-	SIGNAL rst, rst_n_filtered, synch_rst			  							: std_logic;
-	SIGNAL sm_clken, blink_sig														: std_logic; 
-	SIGNAL pb_n_filtered, pb														: std_logic_vector(3 downto 0); 
-	SIGNAL ew_sync_out, ns_sync_out												: std_logic; 
-	SIGNAL ew_hldr_out,	ns_hldr_out  									      : std_logic; 
-	SIGNAL ew_clear, ns_clear														: std_logic; 
-	SIGNAL ew_crossing, ns_crossing												: std_logic; 
-	SIGNAL ew_green, ew_amber, ew_red, ns_green, ns_amber, ns_red 		: std_logic; 
-	SIGNAL ew_lights, ns_lights													: std_logic_vector(6 downto 0);
+	CONSTANT	sim_mode: boolean := FALSE;  -- set to FALSE for LogicalStep board downloads																						-- set to TRUE for SIMULATIONS
+	SIGNAL rst, rst_n_filtered, synch_rst: std_logic;
+	SIGNAL sm_clken, blink_sig: std_logic; 
+	SIGNAL pb_n_filtered, pb: std_logic_vector(3 downto 0); 
+	SIGNAL ew_sync_out, ns_sync_out: std_logic; 
+	SIGNAL ew_hldr_out,	ns_hldr_out: std_logic; 
+	SIGNAL ew_clear, ns_clear: std_logic; 
+	SIGNAL ew_crossing, ns_crossing: std_logic; 
+	SIGNAL ew_green, ew_amber, ew_red, ns_green, ns_amber, ns_red: std_logic; 
+	SIGNAL ew_lights, ns_lights: std_logic_vector(6 downto 0);
 	
 BEGIN
 ----------------------------------------------------------------------------------------------------
@@ -131,8 +129,9 @@ INST6: synchronizer		port map (clkin_50, synch_rst, pb(0), ns_sync_out);
 INST7: holding_register	port map(clkin_50, synch_rst, ns_clear, ns_sync_out, ns_hldr_out);
 leds(1) <= ns_hldr_out;
 
-INST8: state_machine		port map(clkin_50, synch_rst, sm_clken, blink_sig, ns_hldr_out, ew_hldr_out, ns_green, ns_amber, ns_red, ew_green, ew_amber, ew_red, ns_crossing, ew_crossing, ns_clear, ew_clear, leds(7 downto 4));
-
+INST8: state_machine		port map(clkin_50, synch_rst, sm_clken, blink_sig, ns_hldr_out, ew_hldr_out,
+					 ns_green, ns_amber, ns_red, ew_green, ew_amber, ew_red, ns_crossing,
+					 ew_crossing, ns_clear, ew_clear, leds(7 downto 4));
 leds(0) <= ns_crossing;
 leds(2) <= ew_crossing;
 
