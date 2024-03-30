@@ -1,3 +1,5 @@
+-- Aditi Jindal Brandon Kong, Group 15
+
 library ieee;
 use ieee.std_logic_1164.all;
 
